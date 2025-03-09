@@ -2,6 +2,9 @@ const nodemailer = require('nodemailer');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const cors = require('cors');
+
+app.use(cors()); // Разрешает запросы с других доменов
 
 app.use(bodyParser.json());
 
@@ -46,3 +49,4 @@ app.post('/send-message', (req, res) => {
 app.listen(3000, () => {
   console.log('Server is running on http://localhost:3000');
 });
+
