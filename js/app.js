@@ -52,7 +52,7 @@ window.addEventListener("click", (e) => {
 
 // Форма обратной связи
 const form = document.getElementById("contact-form");
-const status = document.getElementById("form-status");
+const status = document.getElementById("response");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -67,8 +67,28 @@ form.addEventListener("submit", (e) => {
     return;
   }
 
-  status.style.color = "green";
-  status.textContent = "Сообщение успешно отправлено!";
+  // Отправляем данные на сервер через fetch
+  fetch('/send-message', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ name, email, message }) // Отправляем данные в формате JSON
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      status.style.color = "green";
+      status.textContent = "Сообщение успешно отправлено!";
+    } else {
+      status.style.color = "red";
+      status.textContent = "Ошибка при отправке сообщения.";
+    }
+  })
+  .catch(error => {
+    status.style.color = "red";
+    status.textContent = "Произошла ошибка при отправке.";
+  });
 
   form.reset();
 });
