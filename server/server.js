@@ -15,16 +15,24 @@ const transporter = nodemailer.createTransport({
 
 app.post('/send-message', (req, res) => {
   const { name, email, message } = req.body;
+  
+  // Логируем полученные данные для отладки
+  console.log('Получены данные от пользователя:');
+  console.log(`Имя: ${name}`);
+  console.log(`Email: ${email}`);
+  console.log(`Сообщение: ${message}`);
 
-  // Создаём объект mailOptions перед использованием
   const mailOptions = {
-    from: email,  // Отправитель - это почта, введенная в форме
-    to: 'your-email@example.com',  // Твоя почта, куда нужно отправить сообщение
+    from: email,  // Отправитель
+    to: 'your-email@example.com',  // Твоя почта
     subject: 'Новое сообщение с сайта',  // Тема письма
-    text: `Имя: ${name}\nEmail: ${email}\nСообщение:\n${message}`  // Содержимое письма
+    text: `Имя: ${name}\nEmail: ${email}\nСообщение:\n${message}`  // Текст письма
   };
 
-  // Отправка письма
+  // Логируем mailOptions перед отправкой
+  console.log('Настройки письма:');
+  console.log(mailOptions);
+
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.error('Ошибка при отправке письма:', error);
