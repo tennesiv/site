@@ -23,11 +23,21 @@
   </style>
 </head>
 <body>
-  <button onclick="changeText()">Нажми меня!</button>
+  <button onclick="changeColor()">???</button>
 
   <script>
-    function changeText() {
-      document.querySelector('h1').innerText = 'Ты изменил заголовок!';
+    function changeColor() {
+      let header = document.querySelector("h1");
+      header.style.color = getRandomColor();
+    }
+
+    function getRandomColor(){
+      let letters = "0123456789ABCDEF";
+      let color = "#";
+      for (let i = 0; i < 6; i++){
+        color += letters[Math.floor(math.random() * 16)];
+      }
+      return color
     }
   </script>
 
