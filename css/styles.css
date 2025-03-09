@@ -1,4 +1,4 @@
-/* Базовые стили */
+/* базовые стили */
 * {
   margin: 0;
   padding: 0;
@@ -56,7 +56,7 @@ nav {
   color: #ffd700;
 }
 
-/* Параллакс */
+/* параллакс */
 .parallax {
   background: url('../img/gallery1.jpg') no-repeat center center/cover;
   background-attachment: fixed;
@@ -67,7 +67,7 @@ nav {
   align-items: center;
 }
 
-/* Секции */
+/* секции */
 section {
   padding: 60px 0;
 }
@@ -137,7 +137,7 @@ h2 {
   transform: scale(1.05);
 }
 
-/* Модальное окно */
+/* модальное окно */
 .modal {
   display: none;
   position: fixed;
@@ -164,7 +164,7 @@ h2 {
   cursor: pointer;
 }
 
-/* Форма */
+/* форма */
 form {
   display: flex;
   flex-direction: column;
@@ -190,7 +190,7 @@ textarea {
   font-weight: bold;
 }
 
-/* Кнопка наверх */
+/* кнопка наверх */
 #scrollTopBtn {
   display: none;
   position: fixed;
@@ -209,7 +209,7 @@ textarea {
   background-color: #555;
 }
 
-/* Подвал */
+/* подвал */
 footer {
   text-align: center;
   padding: 20px 0;
@@ -217,7 +217,7 @@ footer {
   color: #fff;
 }
 
-/* Адаптив */
+/* адаптив */
 @media (max-width: 768px) {
   .services {
     flex-direction: column;
