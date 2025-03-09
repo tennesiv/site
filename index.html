@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
@@ -12,24 +12,17 @@
       <h1>Мой сайт</h1>
       <nav>
         <button class="burger" aria-label="Открыть меню">☰</button>
+        <ul class="nav-menu">
+          <li><a href="#home">Главная</a></li>
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#contact">Контакты</a></li>
+        </ul>
       </nav>
     </div>
   </header>
 
   <main>
     <section id="home" class="hidden">
-      ...
-    </section>
-
-    <section id="services" class="hidden">
-      ...
-    </section>
-
-    <section id="contact" class="hidden">
-      ...
-    </section>
-
-    <section id="home">
       <div class="container">
         <h2>Добро пожаловать!</h2>
         <p>Описание главной страницы.</p>
@@ -37,7 +30,7 @@
       </div>
     </section>
 
-    <section id="services">
+    <section id="services" class="hidden">
       <div class="container">
         <h2>Наши услуги</h2>
         <p>Описание предоставляемых услуг.</p>
@@ -45,7 +38,7 @@
       </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="hidden">
       <div class="container">
         <h2>Контакты</h2>
         <p>Email: example@email.com</p>
@@ -59,6 +52,9 @@
       <p>&copy; 2025 Мой сайт</p>
     </div>
   </footer>
+
+  <!-- Кнопка наверх -->
+  <button class="scroll-to-top" aria-label="Наверх">↑</button>
 
   <script src="js/app.js" defer></script>
 </body>
