@@ -51,41 +51,38 @@ window.addEventListener("click", (e) => {
 });
 
 // форма обратной связи
-const form = document.querySelector('form');
-const status = document.getElementById('status');
+const form = document.getElementById("contact-form");
+const status = document.getElementById("status");
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
+form.addEventListener("submit", (e) => {
+  e.preventDefault(); // Не даем форме отправиться традиционным способом
 
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const message = document.getElementById('message').value.trim();
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
 
   if (!name || !email || !message) {
-    status.style.color = 'red';
-    status.textContent = 'Пожалуйста, заполните все поля!';
+    status.style.color = "red";
+    status.textContent = "Пожалуйста, заполните все поля!";
     return;
   }
 
-  try {
-    const response = await fetch('/api/sendMessage', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name, email, message }),
-    });
-
-    const data = await response.json();
-    if (response.ok) {
-      status.style.color = 'green';
-      status.textContent = data.message;
-    } else {
-      status.style.color = 'red';
-      status.textContent = data.error;
-    }
-  } catch (error) {
-    status.style.color = 'red';
-    status.textContent = 'Ошибка при отправке сообщения!';
-  }
+  // Отправка данных через fetch
+  fetch('/api/sendMessage', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ name, email, message })
+  })
+  .then(response => response.json())
+  .then(data => {
+    status.style.color = "green";
+    status.textContent = "Сообщение успешно отправлено!";
+    form.reset();
+  })
+  .catch(error => {
+    status.style.color = "red";
+    status.textContent = "Произошла ошибка при отправке сообщения.";
+  });
 });
