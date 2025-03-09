@@ -51,43 +51,41 @@ window.addEventListener("click", (e) => {
 });
 
 // форма обратной связи
-const form = document.getElementById("contact-form");
-const status = document.getElementById("response");
+const form = document.querySelector('form');
+const status = document.getElementById('status');
 
-form.addEventListener("submit", (e) => {
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const message = document.getElementById("message").value.trim();
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
 
   if (!name || !email || !message) {
-    status.style.color = "red";
-    status.textContent = "Пожалуйста, заполните все поля!";
+    status.style.color = 'red';
+    status.textContent = 'Пожалуйста, заполните все поля!';
     return;
   }
 
-  fetch('http://localhost:3000/send-message', {  
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ name, email, message }) // данные в формате JSON
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.success) {
-      status.style.color = "green";
+  try {
+    const response = await fetch('/api/sendMessage', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, email, message }),
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+      status.style.color = 'green';
       status.textContent = data.message;
     } else {
-      status.style.color = "red";
-      status.textContent = data.message;
+      status.style.color = 'red';
+      status.textContent = data.error;
     }
-  })
-  .catch(error => {
-    status.style.color = "red";
-    status.textContent = "Произошла ошибка при отправке.";
-  });
-
-  form.reset();
+  } catch (error) {
+    status.style.color = 'red';
+    status.textContent = 'Ошибка при отправке сообщения!';
+  }
 });
