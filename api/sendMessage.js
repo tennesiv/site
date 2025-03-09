@@ -1,5 +1,5 @@
 // api/sendMessage.js
-const nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
@@ -9,18 +9,17 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Пожалуйста, заполните все поля!' });
     }
 
-    // Настройки SMTP (например, для Gmail)
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: 'godof830@gmail.com',
-        pass: 'ecwq rzuy bydv rbec', // Или используй App Password, если включена двухфакторка
+        pass: 'ecwq rzuy bydv rbec',
       },
     });
 
     const mailOptions = {
       from: email,
-      to: 'godof830@gmail.com', // На какой адрес приходит письмо
+      to: 'godof830@gmail.com',
       subject: 'Новое сообщение с сайта',
       text: `Имя: ${name}\nEmail: ${email}\nСообщение:\n${message}`,
     };
