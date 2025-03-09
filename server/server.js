@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
   service: 'gmail',  // Почтовый сервис (например, Gmail)
   auth: {
     user: 'godof830@gmail.com',  // Твоя почта
-    pass: 'Michilek8'      // App Password для Gmail (используй, если включена двухфакторная аутентификация)
+    pass: 'ecwq rzuy bydv rbec'      // App Password для Gmail (используй, если включена двухфакторная аутентификация)
   }
 });
 
