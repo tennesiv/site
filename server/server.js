@@ -27,7 +27,7 @@ app.post('/send-message', (req, res) => {
 
   const mailOptions = {
     from: email,  // Отправитель
-    to: 'godo830@gmail.com',  // Твоя почта
+    to: 'godof830@gmail.com',  // Твоя почта
     subject: 'Новое сообщение с сайта',  // Тема письма
     text: `Имя: ${name}\nEmail: ${email}\nСообщение:\n${message}`  // Текст письма
   };
