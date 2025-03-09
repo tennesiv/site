@@ -67,8 +67,7 @@ form.addEventListener("submit", (e) => {
     return;
   }
 
-  // Отправляем данные на сервер через fetch
-  fetch('/send-message', {
+  fetch('http://localhost:3000/send-message', {  // Обрати внимание на этот URL
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -79,10 +78,10 @@ form.addEventListener("submit", (e) => {
   .then(data => {
     if (data.success) {
       status.style.color = "green";
-      status.textContent = "Сообщение успешно отправлено!";
+      status.textContent = data.message;
     } else {
       status.style.color = "red";
-      status.textContent = "Ошибка при отправке сообщения.";
+      status.textContent = data.message;
     }
   })
   .catch(error => {
