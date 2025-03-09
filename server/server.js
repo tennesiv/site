@@ -15,14 +15,14 @@ app.post('/send-message', (req, res) => {
     service: 'gmail',
     auth: {
       user: 'your-email@gmail.com', // Укажи свой email
-      pass: 'your-email-password'    // Укажи свой пароль (или создайте App Password в Google)
+      pass: 'your-email-password',    // Укажи свой пароль (или создайте App Password в Google)
     }
   });
 
   // Настройка письма
   const mailOptions = {
     from: email,
-    to: 'godof830@gmail.com'
+    to: 'godof830@gmail.com',
     subject: 'Новое сообщение с сайта',
     text: `Имя: ${name}\nEmail: ${email}\nСообщение:\n${message}`
   };
