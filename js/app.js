@@ -1,4 +1,4 @@
-// Анимация при скролле
+// анимация при скролле
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -9,7 +9,7 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
 
-// Кнопка "наверх"
+// кнопка наверх
 const scrollTopBtn = document.getElementById("scrollTopBtn");
 
 window.addEventListener("scroll", () => {
@@ -27,7 +27,7 @@ scrollTopBtn.addEventListener("click", () => {
   });
 });
 
-// Модальное окно для галереи
+// окно для галереи
 const modal = document.querySelector(".modal");
 const modalImg = document.getElementById("modal-img");
 const closeBtn = document.querySelector(".close");
@@ -50,7 +50,7 @@ window.addEventListener("click", (e) => {
   }
 });
 
-// Форма обратной связи
+// форма обратной связи
 const form = document.getElementById("contact-form");
 const status = document.getElementById("response");
 
@@ -67,12 +67,12 @@ form.addEventListener("submit", (e) => {
     return;
   }
 
-  fetch('http://localhost:3000/send-message', {  // Обрати внимание на этот URL
+  fetch('http://localhost:3000/send-message', {  
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ name, email, message }) // Отправляем данные в формате JSON
+    body: JSON.stringify({ name, email, message }) // данные в формате JSON
   })
   .then(response => response.json())
   .then(data => {
