@@ -72,7 +72,11 @@ form.addEventListener("submit", (e) => {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ name, email, message }) // Отправляем данные в формате JSON
+    body: JSON.stringify({
+      name: 'John Doe',
+      email: 'john@example.com',
+      message: 'Test message',
+    }) // Отправляем данные в формате JSON
   })
   .then(response => response.json())
   .then(data => {
