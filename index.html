@@ -26,11 +26,6 @@
   <button onclick="changeColor()">???</button>
 
   <script>
-    function changeColor() {
-      let header = document.querySelector("h1");
-      header.style.color = getRandomColor();
-    }
-
     function getRandomColor(){
       let letters = "0123456789ABCDEF";
       let color = "#";
@@ -38,6 +33,11 @@
         color += letters[Math.floor(math.random() * 16)];
       }
       return color
+    }
+
+    function changeColor() {
+      let header = document.querySelector("h1");
+      header.style.color = getRandomColor();
     }
   </script>
 
