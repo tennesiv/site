@@ -41,3 +41,67 @@ footer {
     text-align: center;
     padding: 10px;
 }
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+    header {
+        padding: 30px 10px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    section {
+        margin: 10px 0;
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+}
+
+/* Плавные переходы */
+a {
+    text-decoration: none;
+    color: #4CAF50;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #333;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 15px 32px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Фон */
+body {
+    background: linear-gradient(135deg, #6e7dff, #82f9b8);
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Шрифт */
+body {
+    font-family: 'Roboto', sans-serif;
+}
