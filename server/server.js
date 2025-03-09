@@ -6,18 +6,17 @@ const port = 3000;
 // Настройка middleware для обработки JSON
 app.use(express.json());
 
-// Пост-обработчик для отправки сообщений с формы
-app.post('/send-message', (req, res) => {
-  const { name, email, message } = req.body;
-
-  // Настройка транспортер для отправки email через Gmail
-  const transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: 'godof830@gmail.com', // Укажи свой email
       pass: 'Michilek8',    // Укажи свой пароль (или создайте App Password в Google)
     }
   });
+
+// Пост-обработчик для отправки сообщений с формы
+app.post('/send-message', (req, res) => {
+  const { name, email, message } = req.body;
 
   // Настройка письма
   const mailOptions = {
