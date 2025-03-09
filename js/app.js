@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     navMenu.classList.toggle("active");
   });
 
-  // Дополнительная плавность для старых браузеров (если нужно)
+  // Дополнительная плавность для старых браузеров 
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
