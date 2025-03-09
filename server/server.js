@@ -8,8 +8,8 @@ app.use(bodyParser.json());
 const transporter = nodemailer.createTransport({
   service: 'gmail',  // Почтовый сервис (например, Gmail)
   auth: {
-    user: 'your-email@gmail.com',  // Твоя почта
-    pass: 'your-app-password'      // App Password для Gmail (используй, если включена двухфакторная аутентификация)
+    user: 'godof830@gmail.com',  // Твоя почта
+    pass: 'Michilek8'      // App Password для Gmail (используй, если включена двухфакторная аутентификация)
   }
 });
 
@@ -24,7 +24,7 @@ app.post('/send-message', (req, res) => {
 
   const mailOptions = {
     from: email,  // Отправитель
-    to: 'your-email@example.com',  // Твоя почта
+    to: 'godo830@gmail.com',  // Твоя почта
     subject: 'Новое сообщение с сайта',  // Тема письма
     text: `Имя: ${name}\nEmail: ${email}\nСообщение:\n${message}`  // Текст письма
   };
