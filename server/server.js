@@ -1,50 +1,40 @@
-const express = require('express');
 const nodemailer = require('nodemailer');
+const express = require('express');
 const app = express();
-const port = 3000;
+const bodyParser = require('body-parser');
 
-// Настройка middleware для обработки JSON
-app.use(express.json());
+app.use(bodyParser.json());
 
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'godof830@gmail.com', // Укажи свой email
-      pass: 'Michilek8',    // Укажи свой пароль (или создайте App Password в Google)
-    }
-  });
+  service: 'gmail',  // Почтовый сервис (например, Gmail)
+  auth: {
+    user: 'your-email@gmail.com',  // Твоя почта
+    pass: 'your-app-password'      // App Password для Gmail (используй, если включена двухфакторная аутентификация)
+  }
+});
 
-// Пост-обработчик для отправки сообщений с формы
 app.post('/send-message', (req, res) => {
   const { name, email, message } = req.body;
 
-  // Настройка письма
+  // Создаём объект mailOptions перед использованием
   const mailOptions = {
-    from: email,
-    to: 'godof830@gmail.com',
-    subject: 'Новое сообщение с сайта',
-    text: `Имя: ${name}\nEmail: ${email}\nСообщение:\n${message}`
+    from: email,  // Отправитель - это почта, введенная в форме
+    to: 'your-email@example.com',  // Твоя почта, куда нужно отправить сообщение
+    subject: 'Новое сообщение с сайта',  // Тема письма
+    text: `Имя: ${name}\nEmail: ${email}\nСообщение:\n${message}`  // Содержимое письма
   };
 
   // Отправка письма
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      return res.json({ success: false, message: 'Ошибка при отправке сообщения.' });
+      console.error('Ошибка при отправке письма:', error);
+      return res.status(500).send({ success: false, message: 'Ошибка при отправке письма.' });
     }
-    res.json({ success: true, message: 'Сообщение успешно отправлено!' });
+    console.log('Письмо отправлено:', info);
+    res.send({ success: true, message: 'Сообщение успешно отправлено!' });
   });
 });
 
-// Запуск сервера
-app.listen(port, () => {
-  console.log(`Сервер работает на порту ${port}`);
-});
-
-transporter.sendMail(mailOptions, (error, info) => {
-  if (error) {
-    console.error('Ошибка при отправке письма:', error);  // Лог ошибки
-    return res.json({ success: false, message: 'Ошибка при отправке сообщения.' });
-  }
-  console.log('Письмо отправлено:', info.response);  // Лог успешной отправки
-  res.json({ success: true, message: 'Сообщение успешно отправлено!' });
+app.listen(3000, () => {
+  console.log('Server is running on http://localhost:3000');
 });
