@@ -40,3 +40,12 @@ app.post('/send-message', (req, res) => {
 app.listen(port, () => {
   console.log(`Сервер работает на порту ${port}`);
 });
+
+transporter.sendMail(mailOptions, (error, info) => {
+  if (error) {
+    console.error('Ошибка при отправке письма:', error);  // Лог ошибки
+    return res.json({ success: false, message: 'Ошибка при отправке сообщения.' });
+  }
+  console.log('Письмо отправлено:', info.response);  // Лог успешной отправки
+  res.json({ success: true, message: 'Сообщение успешно отправлено!' });
+});
