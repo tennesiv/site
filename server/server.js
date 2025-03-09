@@ -4,35 +4,35 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-app.use(cors()); // Разрешает запросы с других доменов
+app.use(cors()); 
 
 app.use(bodyParser.json());
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',  // Почтовый сервис (например, Gmail)
+  service: 'gmail', 
   auth: {
-    user: 'godof830@gmail.com',  // Твоя почта
-    pass: 'ecwq rzuy bydv rbec'      // App Password для Gmail (используй, если включена двухфакторная аутентификация)
+    user: 'godof830@gmail.com',  
+    pass: 'ecwq rzuy bydv rbec'     
   }
 });
 
 app.post('/send-message', (req, res) => {
   const { name, email, message } = req.body;
   
-  // Логируем полученные данные для отладки
+
   console.log('Получены данные от пользователя:');
   console.log(`Имя: ${name}`);
   console.log(`Email: ${email}`);
   console.log(`Сообщение: ${message}`);
 
   const mailOptions = {
-    from: email,  // Отправитель
-    to: 'godof830@gmail.com',  // Твоя почта
-    subject: 'Новое сообщение с сайта',  // Тема письма
-    text: `Имя: ${name}\nEmail: ${email}\nСообщение:\n${message}`  // Текст письма
+    from: email,  
+    to: 'godof830@gmail.com',  
+    subject: 'Новое сообщение с сайта',  
+    text: `Имя: ${name}\nEmail: ${email}\nСообщение:\n${message}`  
   };
 
-  // Логируем mailOptions перед отправкой
+
   console.log('Настройки письма:');
   console.log(mailOptions);
 
