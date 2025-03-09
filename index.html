@@ -1,48 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="assets/heart.ico" type="image/x-icon">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>!!!</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      font-family: sans-serif;
-      background-color: #f5f5f5;
-    }
-    h1 {
-      color: #333;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой Крутой Сайт</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <button onclick="changeColor()">???</button>
+    <header>
+        <h1>Добро пожаловать</h1>
+    </header>
 
-  <script>
-    function getRandomColor(){
-      let letters = "0123456789ABCDEF";
-      let color = "#";
-      for (let i = 0; i < 6; i++){
-        color += letters[Math.floor(math.random() * 16)];
-      }
-      return color
-    }
+    <main>
+        <section>
+            <h2>Проект 1</h2>
+            <p>Описание первого проекта</p>
+        </section>
 
-    function changeColor() {
-      let header = document.querySelector("h1");
-      header.style.color = getRandomColor();
-    }
-  </script>
+        <section>
+            <h2>Проект 2</h2>
+            <p>Описание второго проекта</p>
+        </section>
+    </main>
 
-  <header>
-    <h1>Давалка!</h1>
-  </header>
+    <footer>
+        <p>&copy; 2025. У женщин нет прав.</p>
+    </footer>
+
+    <!-- Кнопка для изменения цвета -->
+    <button onclick="changeColor()">???</button>
+
+    <!-- Скрипт -->
+    <script>
+        function changeColor() {
+            // Находим элемент заголовка h1
+            let header = document.querySelector('h1');
+            
+            // Меняем цвет заголовка на случайный
+            header.style.color = getRandomColor();
+        }
+
+        // Функция для генерации случайного цвета
+        function getRandomColor() {
+            let letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
 </body>
 </html>
